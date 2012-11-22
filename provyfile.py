@@ -19,9 +19,6 @@ class SimpleServer(Role):
             role.ensure_repository('git://github.com/diogobaeder/provy-demo.git',
                                    '/home/vagrant/provy-demo')
 
-        with cd(SITE_PATH):
-            self.execute('gunicorn --daemon demo.wsgi:application')
-
 servers = {
     'demo': {
         'address': VM_IP,
