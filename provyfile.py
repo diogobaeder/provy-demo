@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from provy.core import Role
-from provy.more.debian import UserRole, AptitudeRole, DjangoRole
+from provy.more.debian import GitRole, PipRole
 
 
 VM_IP = '192.168.1.11'
@@ -9,11 +9,14 @@ VM_IP = '192.168.1.11'
 
 class SimpleServer(Role):
     def provision(self):
-        with self.using(UserRole) as role:
-            role.ensure_user('my-user', identified_by='my-pass', is_admin=True)
+        with self.using(PipRole) as role:
+            role.ensure_package_installed('django')
 
-        with self.using(AptitudeRole) as role:
-            role.ensure_package_installed('vim')
+        with self.using(GitRole) as role:
+            role.ensure_repository('git://github.com/diogobaeder/provy-demo.git',
+                                   '/home/vagrant/provy-demo')
+
+        self.execute('nohup python /home/vagrant/provy-demo/demo/manage.py runserver &')
 
 servers = {
     'frontend': {
