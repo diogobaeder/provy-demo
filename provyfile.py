@@ -19,7 +19,7 @@ class SimpleServer(Role):
         self.execute('nohup python /home/vagrant/provy-demo/demo/manage.py runserver &')
 
 servers = {
-    'frontend': {
+    'demo': {
         'address': VM_IP,
         'user': 'vagrant',
         'roles': [
