@@ -1,6 +1,4 @@
-from commands import getoutput
-
-from fabric.api import cd, env, run
+from fabric.api import cd, env, run, local
 
 from provyfile import VM_IP
 
@@ -12,7 +10,6 @@ env.password = 'vagrant'
 
 SITE_PATH = '/home/vagrant/provy-demo/demo/'
 BROWSER = 'google-chrome'
-REMOTE_ENCAPSULATED_IP = '10.0.2.15'
 
 
 def start():
@@ -22,4 +19,4 @@ def start():
 
 def show():
     url = 'http://localhost:8001'
-    print getoutput('%s %s' % (BROWSER, url))
+    local('%s %s' % (BROWSER, url))
