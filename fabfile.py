@@ -21,5 +21,5 @@ def start():
 
 
 def show():
-    url = 'http://localhost:8001' % VM_IP
+    url = 'http://localhost:8001'
     print getoutput('%s %s' % (BROWSER, url))
