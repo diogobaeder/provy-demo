@@ -7,10 +7,10 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "lucid32"
+  config.vm.box = "precise32"
 
   config.vm.forward_port(8000, 8001)
-  config.vm.network(:bridged)
+  config.vm.network(:hostonly, "10.11.12.13")
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.

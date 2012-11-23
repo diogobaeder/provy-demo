@@ -12,13 +12,14 @@ env.password = 'vagrant'
 
 SITE_PATH = '/home/vagrant/provy-demo/demo/'
 BROWSER = 'google-chrome'
+REMOTE_ENCAPSULATED_IP = '10.0.2.15'
 
 
 def start():
     with cd(SITE_PATH):
-        run('gunicorn --daemon demo.wsgi:application', pty=False)
+        run('gunicorn --daemon -b 0.0.0.0:8000 demo.wsgi:application', pty=False)
 
 
 def show():
-    url = 'http://%s:8000' % VM_IP
+    url = 'http://localhost:8001' % VM_IP
     print getoutput('%s %s' % (BROWSER, url))
