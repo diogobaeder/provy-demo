@@ -5,7 +5,7 @@ from provy.core import Role
 from provy.more.debian import GitRole, PipRole
 
 
-VM_IP = '10.11.12.13'
+VM_IP = '10.11.12.13:22'
 SITE_PATH = '/home/vagrant/provy-demo/demo/'
 
 
